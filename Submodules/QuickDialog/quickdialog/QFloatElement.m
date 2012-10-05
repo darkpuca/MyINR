@@ -12,11 +12,12 @@
 // permissions and limitations under the License.
 //
 
+#import <objc/message.h>
 #import "QFloatElement.h"
 
 @implementation QFloatElement
 
-@synthesize floatValue = _floatValue;
+@synthesize floatValue = _floatValue, sliderAction = _sliderAction;
 
 - (QFloatElement *)initWithTitle:(NSString *)title value:(float)value {
     self = [super initWithTitle:title Value:nil] ;
@@ -60,6 +61,17 @@
     slider.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     slider.value = _floatValue;
     cell.accessoryView = slider;
+    
+    if (_sliderAction)
+    {
+        SEL action = NSSelectorFromString(_sliderAction);
+        if (action)
+        {
+            if ([controller respondsToSelector:action])
+                [slider addTarget:controller action:action forControlEvents:UIControlEventValueChanged];
+        }
+    }
+    
     return cell;
 }
 

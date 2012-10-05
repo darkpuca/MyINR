@@ -21,6 +21,7 @@
 }
 
 @property(nonatomic, assign) float floatValue;
+@property (nonatomic, strong) NSString *sliderAction;
 
 
 - (QFloatElement *)initWithTitle:(NSString *)string value:(float)value;

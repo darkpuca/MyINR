@@ -7,8 +7,12 @@
 //
 
 #import "NewLogViewController.h"
+#import "AppDelegate.h"
 
 @interface NewLogViewController ()
+
+- (void)sliderChanged:(UISlider *)sender;
+- (void)registPressed:(id)sender;
 
 @end
 
@@ -26,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
 }
 
 - (void)viewDidUnload
@@ -45,12 +49,34 @@
 
 #pragma mark - Functions
 
-- (void)sliderChanged:(QFloatElement *)slider
+- (void)sliderChanged:(UISlider *)sender;
 {
-    CGFloat inrVal = 1.0 + slider.floatValue * 2.0;
+    CGFloat inrVal = 1.0 + sender.value * 2.0;
     NSString *val = [NSString stringWithFormat:@"%.1f", inrVal];
+
     QLabelElement *label = (QLabelElement *)[self.root elementWithKey:@"value"];
+
     [label setValue:val];
+    [self.quickDialogTableView reloadCellForElements:label, nil];
+}
+
+- (void)registPressed:(id)sender
+{
+    QDateTimeElement *dateElmt = (QDateTimeElement *)[self.root elementWithKey:@"date"];
+    QLabelElement *valueElmt = (QLabelElement *)[self.root elementWithKey:@"value"];
+    QEntryElement *memoElmt = (QEntryElement *)[self.root elementWithKey:@"memo"];
+    
+    NSMutableDictionary *newInfo = [[NSMutableDictionary alloc] initWithCapacity:3];
+    [newInfo setValue:dateElmt.dateValue forKey:@"date"];
+    [newInfo setValue:[NSNumber numberWithFloat:[[valueElmt value] floatValue]] forKey:@"inr"];
+    [newInfo setValue:memoElmt.textValue forKey:@"memo"];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate insertNewData:newInfo];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+//    NSLog(@"date: %@, inr: %@, memo: %@", dateElmt.dateValue, valueElmt.value, memoElmt.textValue);
 }
 
 

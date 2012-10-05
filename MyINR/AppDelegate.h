@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+
+}
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *naviController;
+@property (nonatomic, strong) FMDatabase *inrDB;
+@property (nonatomic, strong) NSMutableDictionary *settings;
+
+- (NSString *)databaseFilePath;
+
+
+- (BOOL)insertNewData:(NSDictionary *)info;
+- (void)updateSettings;
 
 @end

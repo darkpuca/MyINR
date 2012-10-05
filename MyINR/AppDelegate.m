@@ -6,15 +6,56 @@
 //  Copyright (c) 2012 darkpuca. All rights reserved.
 //
 
-
-
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
+
+#define kDatabaseFileName        @"MyINR.sqlite"
+
+
 @implementation AppDelegate
+
+@synthesize inrDB = _inrDB, settings = _settings;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    BOOL isDbInitailized = NO;
+    NSString *databasePath = [self databaseFilePath];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:databasePath])
+    {
+        NSString *originFile = [[[NSBundle mainBundle] bundlePath] stringByAppendingFormat:@"/%@", kDatabaseFileName];
+        [[NSFileManager defaultManager] copyItemAtPath:originFile toPath:databasePath error:nil];
+        
+        isDbInitailized = YES;
+    }
+    
+    _inrDB = [FMDatabase databaseWithPath:[self databaseFilePath]];
+    if (![_inrDB open])
+        NSLog(@"db open error");
+    
+    _settings = [[NSMutableDictionary alloc] init];
+    if (isDbInitailized)
+    {
+        NSString *defaultSql = @"INSERT INTO SETTING (USERNAME, INR_TARGET, INR_MIN, INR_MAX) VALUES ('User', 2.0, 1.0, 3.0)";
+        [_inrDB executeUpdate:defaultSql];
+        
+        [_settings setValue:@"User" forKey:@"name"];
+        [_settings setValue:@"2.0" forKey:@"target"];
+        [_settings setValue:@"1.0" forKey:@"min"];
+        [_settings setValue:@"3.0" forKey:@"max"];
+    }
+    else
+    {
+        NSString *sql = @"SELECT * FROM SETTING";
+        FMResultSet *rs = [_inrDB executeQuery:sql];
+        [rs next];
+        
+        [_settings setValue:[rs stringForColumn:@"USERNAME"] forKey:@"name"];
+        [_settings setValue:[rs stringForColumn:@"INR_TARGET"] forKey:@"target"];
+        [_settings setValue:[rs stringForColumn:@"INR_MIN"] forKey:@"min"];
+        [_settings setValue:[rs stringForColumn:@"INR_MAX"] forKey:@"max"];
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -53,6 +94,44 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+
+#pragma mark - Functions
+
+- (NSString *)databaseFilePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	return [documentsDirectory stringByAppendingPathComponent:kDatabaseFileName];
+}
+
+- (BOOL)insertNewData:(NSDictionary *)info
+{
+    if (nil == info) return NO;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateVal = [dateFormatter stringFromDate:[info valueForKey:@"date"]];
+    CGFloat inrVal = [[info valueForKey:@"inr"] floatValue];
+    NSString *memoVal = (nil == [info valueForKey:@"memo"]) ?@"" : [info valueForKey:@"memo"];
+
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO INR_LOG (CHECK_DATE, INR, MEMO) VALUES ('%@', %.1f, '%@')", dateVal, inrVal, memoVal];
+    [_inrDB executeUpdate:insertSql];
+    
+    return YES;
+}
+
+- (void)updateSettings
+{
+    NSString *updateSql = [NSString stringWithFormat:@"UPDATE SETTING SET USERNAME='%@', INR_TARGET=%@, INR_MIN=%@, INR_MAX=%@",
+                           [_settings valueForKey:@"name"],
+                           [_settings valueForKey:@"target"],
+                           [_settings valueForKey:@"min"],
+                           [_settings valueForKey:@"max"]];
+    NSLog(@"running sql: %@", updateSql);
+    [_inrDB executeUpdate:updateSql];
 }
 
 @end

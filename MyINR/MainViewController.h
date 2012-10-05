@@ -10,9 +10,13 @@
 
 @interface MainViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UILabel *nameLabel, *dateLabel, *inrLabel, *addonLabel, *minLabel, *maxLabel;
 
 - (void)logButtonPressed;
 - (void)newButtonPressed;
+
+- (void)updateLastLog;
+
 - (IBAction)settingButtonPressed;
 
 @end

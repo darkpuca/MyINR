@@ -462,7 +462,6 @@
 		//CGContextSetStrokeColorWithColor(c, self.gridYColor.CGColor);
 		// Draw the path 
 		CGContextStrokePath(c);*/
-
         
 		CGFloat components[] = 
 		{0,0,0,0};

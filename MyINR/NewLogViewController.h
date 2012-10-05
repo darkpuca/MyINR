@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuickDialog/QuickDialog.h>
 
 @interface NewLogViewController : QuickDialogController
 
