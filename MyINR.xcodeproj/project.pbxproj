@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A63297E161D49AC00589F27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A63297D161D49AC00589F27 /* UIKit.framework */; };
+		1A632980161D49AC00589F27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A63297F161D49AC00589F27 /* Foundation.framework */; };
+		1A632982161D49AC00589F27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632981161D49AC00589F27 /* CoreGraphics.framework */; };
+		1A632988161D49AC00589F27 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A632986161D49AC00589F27 /* InfoPlist.strings */; };
+		1A63298A161D49AC00589F27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A632989161D49AC00589F27 /* main.m */; };
+		1A63298E161D49AC00589F27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A63298D161D49AC00589F27 /* AppDelegate.m */; };
+		1A632997161D49EC00589F27 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A632995161D49EC00589F27 /* MainViewController.m */; };
+		1A632998161D49EC00589F27 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A632996161D49EC00589F27 /* MainViewController.xib */; };
+		1A63299B161D4C3800589F27 /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A63299A161D4C3800589F27 /* LogViewController.m */; };
+		1A63299E161D4C4800589F27 /* LogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A63299D161D4C4800589F27 /* LogTableViewController.m */; };
+		1A6329A2161D4C8600589F27 /* LogGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6329A0161D4C8600589F27 /* LogGraphViewController.m */; };
+		1A6329A3161D4C8600589F27 /* LogGraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6329A1161D4C8600589F27 /* LogGraphViewController.xib */; };
+		1A6329A6161D4CAD00589F27 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6329A5161D4CAD00589F27 /* SettingViewController.m */; };
+		1A6329AA161D4CD000589F27 /* NewLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6329A8161D4CD000589F27 /* NewLogViewController.m */; };
+		1A632A20161D5F0400589F27 /* MultiTouchS7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A632A1B161D5F0400589F27 /* MultiTouchS7GraphView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1A632A21161D5F0400589F27 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 1A632A1C161D5F0400589F27 /* README */; };
+		1A632A22161D5F0400589F27 /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A632A1E161D5F0400589F27 /* S7GraphView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1A632A2C161D5F1300589F27 /* TBXML+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A632A25161D5F1300589F27 /* TBXML+Compression.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1A632A2D161D5F1300589F27 /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A632A26161D5F1300589F27 /* TBXML+HTTP.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1A632A2E161D5F1300589F27 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A632A27161D5F1300589F27 /* TBXML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1A632A56161D605C00589F27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A55161D605C00589F27 /* libz.dylib */; };
+		1A632A63161D609E00589F27 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A3B161D5F2100589F27 /* libQuickDialog.a */; };
+		1A632A67161D60CD00589F27 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A66161D60CD00589F27 /* CoreLocation.framework */; };
+		1A632A69161D60D500589F27 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A68161D60D500589F27 /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1A632A38161D5F2100589F27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A632A2F161D5F2100589F27 /* QuickDialog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D80B0E3313E052DF00FA85CA;
+			remoteInfo = QuickDialogExample;
+		};
+		1A632A3A161D5F2100589F27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A632A2F161D5F2100589F27 /* QuickDialog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C542393145ADEBD0026A152;
+			remoteInfo = QuickDialog;
+		};
+		1A632A64161D60B500589F27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A632A2F161D5F2100589F27 /* QuickDialog.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C542392145ADEBD0026A152;
+			remoteInfo = QuickDialog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1A632979161D49AC00589F27 /* MyINR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyINR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A63297D161D49AC00589F27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1A63297F161D49AC00589F27 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1A632981161D49AC00589F27 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1A632985161D49AC00589F27 /* MyINR-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyINR-Info.plist"; sourceTree = "<group>"; };
+		1A632987161D49AC00589F27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1A632989161D49AC00589F27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1A63298B161D49AC00589F27 /* MyINR-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyINR-Prefix.pch"; sourceTree = "<group>"; };
+		1A63298C161D49AC00589F27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1A63298D161D49AC00589F27 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1A632994161D49EC00589F27 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		1A632995161D49EC00589F27 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		1A632996161D49EC00589F27 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		1A632999161D4C3800589F27 /* LogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogViewController.h; sourceTree = "<group>"; };
+		1A63299A161D4C3800589F27 /* LogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogViewController.m; sourceTree = "<group>"; };
+		1A63299C161D4C4800589F27 /* LogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewController.h; sourceTree = "<group>"; };
+		1A63299D161D4C4800589F27 /* LogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewController.m; sourceTree = "<group>"; };
+		1A63299F161D4C8600589F27 /* LogGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogGraphViewController.h; sourceTree = "<group>"; };
+		1A6329A0161D4C8600589F27 /* LogGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogGraphViewController.m; sourceTree = "<group>"; };
+		1A6329A1161D4C8600589F27 /* LogGraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogGraphViewController.xib; sourceTree = "<group>"; };
+		1A6329A4161D4CAD00589F27 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		1A6329A5161D4CAD00589F27 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		1A6329A7161D4CD000589F27 /* NewLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLogViewController.h; sourceTree = "<group>"; };
+		1A6329A8161D4CD000589F27 /* NewLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLogViewController.m; sourceTree = "<group>"; };
+		1A632A1A161D5F0400589F27 /* MultiTouchS7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTouchS7GraphView.h; sourceTree = "<group>"; };
+		1A632A1B161D5F0400589F27 /* MultiTouchS7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiTouchS7GraphView.m; sourceTree = "<group>"; };
+		1A632A1C161D5F0400589F27 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		1A632A1D161D5F0400589F27 /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7GraphView.h; sourceTree = "<group>"; };
+		1A632A1E161D5F0400589F27 /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S7GraphView.m; sourceTree = "<group>"; };
+		1A632A1F161D5F0400589F27 /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7Macros.h; sourceTree = "<group>"; };
+		1A632A25161D5F1300589F27 /* TBXML+Compression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+Compression.m"; sourceTree = "<group>"; };
+		1A632A26161D5F1300589F27 /* TBXML+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+HTTP.m"; sourceTree = "<group>"; };
+		1A632A27161D5F1300589F27 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		1A632A29161D5F1300589F27 /* TBXML+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+Compression.h"; sourceTree = "<group>"; };
+		1A632A2A161D5F1300589F27 /* TBXML+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+HTTP.h"; sourceTree = "<group>"; };
+		1A632A2B161D5F1300589F27 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		1A632A2F161D5F2100589F27 /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = Submodules/QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
+		1A632A55161D605C00589F27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		1A632A66161D60CD00589F27 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1A632A68161D60D500589F27 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A632976161D49AC00589F27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A632A69161D60D500589F27 /* MapKit.framework in Frameworks */,
+				1A632A67161D60CD00589F27 /* CoreLocation.framework in Frameworks */,
+				1A632A63161D609E00589F27 /* libQuickDialog.a in Frameworks */,
+				1A632A56161D605C00589F27 /* libz.dylib in Frameworks */,
+				1A63297E161D49AC00589F27 /* UIKit.framework in Frameworks */,
+				1A632980161D49AC00589F27 /* Foundation.framework in Frameworks */,
+				1A632982161D49AC00589F27 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A63296E161D49AC00589F27 = {
+			isa = PBXGroup;
+			children = (
+				1A632A17161D5EF900589F27 /* Submodules */,
+				1A632983161D49AC00589F27 /* MyINR */,
+				1A63297C161D49AC00589F27 /* Frameworks */,
+				1A63297A161D49AC00589F27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A63297A161D49AC00589F27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A632979161D49AC00589F27 /* MyINR.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A63297C161D49AC00589F27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A632A68161D60D500589F27 /* MapKit.framework */,
+				1A632A66161D60CD00589F27 /* CoreLocation.framework */,
+				1A632A55161D605C00589F27 /* libz.dylib */,
+				1A63297D161D49AC00589F27 /* UIKit.framework */,
+				1A63297F161D49AC00589F27 /* Foundation.framework */,
+				1A632981161D49AC00589F27 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A632983161D49AC00589F27 /* MyINR */ = {
+			isa = PBXGroup;
+			children = (
+				1A63298C161D49AC00589F27 /* AppDelegate.h */,
+				1A63298D161D49AC00589F27 /* AppDelegate.m */,
+				1A632994161D49EC00589F27 /* MainViewController.h */,
+				1A632995161D49EC00589F27 /* MainViewController.m */,
+				1A632996161D49EC00589F27 /* MainViewController.xib */,
+				1A632999161D4C3800589F27 /* LogViewController.h */,
+				1A63299A161D4C3800589F27 /* LogViewController.m */,
+				1A63299C161D4C4800589F27 /* LogTableViewController.h */,
+				1A63299D161D4C4800589F27 /* LogTableViewController.m */,
+				1A63299F161D4C8600589F27 /* LogGraphViewController.h */,
+				1A6329A0161D4C8600589F27 /* LogGraphViewController.m */,
+				1A6329A1161D4C8600589F27 /* LogGraphViewController.xib */,
+				1A6329A4161D4CAD00589F27 /* SettingViewController.h */,
+				1A6329A5161D4CAD00589F27 /* SettingViewController.m */,
+				1A6329A7161D4CD000589F27 /* NewLogViewController.h */,
+				1A6329A8161D4CD000589F27 /* NewLogViewController.m */,
+				1A632984161D49AC00589F27 /* Supporting Files */,
+			);
+			path = MyINR;
+			sourceTree = "<group>";
+		};
+		1A632984161D49AC00589F27 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1A632985161D49AC00589F27 /* MyINR-Info.plist */,
+				1A632986161D49AC00589F27 /* InfoPlist.strings */,
+				1A632989161D49AC00589F27 /* main.m */,
+				1A63298B161D49AC00589F27 /* MyINR-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1A632A17161D5EF900589F27 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				1A632A2F161D5F2100589F27 /* QuickDialog.xcodeproj */,
+				1A632A19161D5F0400589F27 /* MultiTouchS7GraphView */,
+				1A632A23161D5F1300589F27 /* TBXML */,
+			);
+			name = Submodules;
+			sourceTree = "<group>";
+		};
+		1A632A19161D5F0400589F27 /* MultiTouchS7GraphView */ = {
+			isa = PBXGroup;
+			children = (
+				1A632A1A161D5F0400589F27 /* MultiTouchS7GraphView.h */,
+				1A632A1B161D5F0400589F27 /* MultiTouchS7GraphView.m */,
+				1A632A1C161D5F0400589F27 /* README */,
+				1A632A1D161D5F0400589F27 /* S7GraphView.h */,
+				1A632A1E161D5F0400589F27 /* S7GraphView.m */,
+				1A632A1F161D5F0400589F27 /* S7Macros.h */,
+			);
+			name = MultiTouchS7GraphView;
+			path = Submodules/MultiTouchS7GraphView;
+			sourceTree = "<group>";
+		};
+		1A632A23161D5F1300589F27 /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				1A632A24161D5F1300589F27 /* TBXML-Code */,
+				1A632A28161D5F1300589F27 /* TBXML-Headers */,
+			);
+			name = TBXML;
+			path = Submodules/TBXML;
+			sourceTree = "<group>";
+		};
+		1A632A24161D5F1300589F27 /* TBXML-Code */ = {
+			isa = PBXGroup;
+			children = (
+				1A632A25161D5F1300589F27 /* TBXML+Compression.m */,
+				1A632A26161D5F1300589F27 /* TBXML+HTTP.m */,
+				1A632A27161D5F1300589F27 /* TBXML.m */,
+			);
+			path = "TBXML-Code";
+			sourceTree = "<group>";
+		};
+		1A632A28161D5F1300589F27 /* TBXML-Headers */ = {
+			isa = PBXGroup;
+			children = (
+				1A632A29161D5F1300589F27 /* TBXML+Compression.h */,
+				1A632A2A161D5F1300589F27 /* TBXML+HTTP.h */,
+				1A632A2B161D5F1300589F27 /* TBXML.h */,
+			);
+			path = "TBXML-Headers";
+			sourceTree = "<group>";
+		};
+		1A632A30161D5F2100589F27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A632A39161D5F2100589F27 /* QuickDialogExample.app */,
+				1A632A3B161D5F2100589F27 /* libQuickDialog.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A632978161D49AC00589F27 /* MyINR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A632991161D49AC00589F27 /* Build configuration list for PBXNativeTarget "MyINR" */;
+			buildPhases = (
+				1A632975161D49AC00589F27 /* Sources */,
+				1A632976161D49AC00589F27 /* Frameworks */,
+				1A632977161D49AC00589F27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A632A65161D60B500589F27 /* PBXTargetDependency */,
+			);
+			name = MyINR;
+			productName = MyINR;
+			productReference = 1A632979161D49AC00589F27 /* MyINR.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A632970161D49AC00589F27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = darkpuca;
+			};
+			buildConfigurationList = 1A632973161D49AC00589F27 /* Build configuration list for PBXProject "MyINR" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1A63296E161D49AC00589F27;
+			productRefGroup = 1A63297A161D49AC00589F27 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1A632A30161D5F2100589F27 /* Products */;
+					ProjectRef = 1A632A2F161D5F2100589F27 /* QuickDialog.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1A632978161D49AC00589F27 /* MyINR */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1A632A39161D5F2100589F27 /* QuickDialogExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = QuickDialogExample.app;
+			remoteRef = 1A632A38161D5F2100589F27 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1A632A3B161D5F2100589F27 /* libQuickDialog.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libQuickDialog.a;
+			remoteRef = 1A632A3A161D5F2100589F27 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A632977161D49AC00589F27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A632988161D49AC00589F27 /* InfoPlist.strings in Resources */,
+				1A632998161D49EC00589F27 /* MainViewController.xib in Resources */,
+				1A6329A3161D4C8600589F27 /* LogGraphViewController.xib in Resources */,
+				1A632A21161D5F0400589F27 /* README in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A632975161D49AC00589F27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A63298A161D49AC00589F27 /* main.m in Sources */,
+				1A63298E161D49AC00589F27 /* AppDelegate.m in Sources */,
+				1A632997161D49EC00589F27 /* MainViewController.m in Sources */,
+				1A63299B161D4C3800589F27 /* LogViewController.m in Sources */,
+				1A63299E161D4C4800589F27 /* LogTableViewController.m in Sources */,
+				1A6329A2161D4C8600589F27 /* LogGraphViewController.m in Sources */,
+				1A6329A6161D4CAD00589F27 /* SettingViewController.m in Sources */,
+				1A6329AA161D4CD000589F27 /* NewLogViewController.m in Sources */,
+				1A632A20161D5F0400589F27 /* MultiTouchS7GraphView.m in Sources */,
+				1A632A22161D5F0400589F27 /* S7GraphView.m in Sources */,
+				1A632A2C161D5F1300589F27 /* TBXML+Compression.m in Sources */,
+				1A632A2D161D5F1300589F27 /* TBXML+HTTP.m in Sources */,
+				1A632A2E161D5F1300589F27 /* TBXML.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A632A65161D60B500589F27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QuickDialog;
+			targetProxy = 1A632A64161D60B500589F27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1A632986161D49AC00589F27 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A632987161D49AC00589F27 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1A63298F161D49AC00589F27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "Submodules/**";
+			};
+			name = Debug;
+		};
+		1A632990161D49AC00589F27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "Submodules/**";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A632992161D49AC00589F27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyINR/MyINR-Prefix.pch";
+				INFOPLIST_FILE = "MyINR/MyINR-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1A632993161D49AC00589F27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyINR/MyINR-Prefix.pch";
+				INFOPLIST_FILE = "MyINR/MyINR-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A632973161D49AC00589F27 /* Build configuration list for PBXProject "MyINR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A63298F161D49AC00589F27 /* Debug */,
+				1A632990161D49AC00589F27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A632991161D49AC00589F27 /* Build configuration list for PBXNativeTarget "MyINR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A632992161D49AC00589F27 /* Debug */,
+				1A632993161D49AC00589F27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A632970161D49AC00589F27 /* Project object */;
+}
