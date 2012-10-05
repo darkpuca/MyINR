@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@interface LogTableCell : UITableViewCell
+
+@property (nonatomic, strong) IBOutlet UILabel *dateLabel, *inrLabel, *memoLabel;
+
+@end
+
 @interface LogTableViewController : UITableViewController
+
+
+- (void)refreshLogs;
 
 @end

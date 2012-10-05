@@ -38,6 +38,11 @@
 		1A9F9C73161E9CB200CC7377 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F9C6C161E9CB200CC7377 /* FMDatabaseQueue.m */; };
 		1A9F9C75161E9CB200CC7377 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F9C6F161E9CB200CC7377 /* FMResultSet.m */; };
 		1A9F9CC3161EA53400CC7377 /* MyINR.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1A9F9CC2161EA53400CC7377 /* MyINR.sqlite */; };
+		1AD049CD161F1AFE006FDD7D /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1AD049CA161F1AFE006FDD7D /* SVProgressHUD.bundle */; };
+		1AD049CE161F1AFE006FDD7D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD049CC161F1AFE006FDD7D /* SVProgressHUD.m */; };
+		1AD049EB161F1D87006FDD7D /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD049EA161F1D87006FDD7D /* SVPullToRefresh.m */; };
+		1AD049ED161F1DD4006FDD7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD049EC161F1DD4006FDD7D /* QuartzCore.framework */; };
+		1AD049EF161F3B0F006FDD7D /* CustomCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AD049EE161F3B0F006FDD7D /* CustomCells.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +122,13 @@
 		1A9F9C6E161E9CB200CC7377 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1A9F9C6F161E9CB200CC7377 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1A9F9CC2161EA53400CC7377 /* MyINR.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = MyINR.sqlite; path = MyINR/res/MyINR.sqlite; sourceTree = "<group>"; };
+		1AD049CA161F1AFE006FDD7D /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		1AD049CB161F1AFE006FDD7D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		1AD049CC161F1AFE006FDD7D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		1AD049E9161F1D87006FDD7D /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		1AD049EA161F1D87006FDD7D /* SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPullToRefresh.m; sourceTree = "<group>"; };
+		1AD049EC161F1DD4006FDD7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1AD049EE161F3B0F006FDD7D /* CustomCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCells.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AD049ED161F1DD4006FDD7D /* QuartzCore.framework in Frameworks */,
 				1A9F9C63161E9B8D00CC7377 /* libsqlite3.0.dylib in Frameworks */,
 				1A632A69161D60D500589F27 /* MapKit.framework in Frameworks */,
 				1A632A67161D60CD00589F27 /* CoreLocation.framework in Frameworks */,
@@ -141,7 +154,6 @@
 		1A63296E161D49AC00589F27 = {
 			isa = PBXGroup;
 			children = (
-				1A9F9C62161E9B8D00CC7377 /* libsqlite3.0.dylib */,
 				1A632A17161D5EF900589F27 /* Submodules */,
 				1A632983161D49AC00589F27 /* MyINR */,
 				1A9F9CC1161EA51800CC7377 /* Resources */,
@@ -161,6 +173,8 @@
 		1A63297C161D49AC00589F27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1AD049EC161F1DD4006FDD7D /* QuartzCore.framework */,
+				1A9F9C62161E9B8D00CC7377 /* libsqlite3.0.dylib */,
 				1A632A68161D60D500589F27 /* MapKit.framework */,
 				1A632A66161D60CD00589F27 /* CoreLocation.framework */,
 				1A632A55161D605C00589F27 /* libz.dylib */,
@@ -190,6 +204,7 @@
 				1A6329A5161D4CAD00589F27 /* SettingViewController.m */,
 				1A6329A7161D4CD000589F27 /* NewLogViewController.h */,
 				1A6329A8161D4CD000589F27 /* NewLogViewController.m */,
+				1AD049EE161F3B0F006FDD7D /* CustomCells.xib */,
 				1A632984161D49AC00589F27 /* Supporting Files */,
 			);
 			path = MyINR;
@@ -213,6 +228,8 @@
 				1A632A19161D5F0400589F27 /* MultiTouchS7GraphView */,
 				1A632A23161D5F1300589F27 /* TBXML */,
 				1A9F9C64161E9CB200CC7377 /* fmdb */,
+				1AD049C9161F1AFE006FDD7D /* SVProgressHUD */,
+				1AD049E8161F1D87006FDD7D /* SVPullToRefresh */,
 			);
 			name = Submodules;
 			sourceTree = "<group>";
@@ -296,6 +313,27 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		1AD049C9161F1AFE006FDD7D /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1AD049CA161F1AFE006FDD7D /* SVProgressHUD.bundle */,
+				1AD049CB161F1AFE006FDD7D /* SVProgressHUD.h */,
+				1AD049CC161F1AFE006FDD7D /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = Submodules/SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		1AD049E8161F1D87006FDD7D /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				1AD049E9161F1D87006FDD7D /* SVPullToRefresh.h */,
+				1AD049EA161F1D87006FDD7D /* SVPullToRefresh.m */,
+			);
+			name = SVPullToRefresh;
+			path = Submodules/SVPullToRefresh;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -376,6 +414,8 @@
 				1A6329A3161D4C8600589F27 /* LogGraphViewController.xib in Resources */,
 				1A632A21161D5F0400589F27 /* README in Resources */,
 				1A9F9CC3161EA53400CC7377 /* MyINR.sqlite in Resources */,
+				1AD049CD161F1AFE006FDD7D /* SVProgressHUD.bundle in Resources */,
+				1AD049EF161F3B0F006FDD7D /* CustomCells.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +444,8 @@
 				1A9F9C72161E9CB200CC7377 /* FMDatabasePool.m in Sources */,
 				1A9F9C73161E9CB200CC7377 /* FMDatabaseQueue.m in Sources */,
 				1A9F9C75161E9CB200CC7377 /* FMResultSet.m in Sources */,
+				1AD049CE161F1AFE006FDD7D /* SVProgressHUD.m in Sources */,
+				1AD049EB161F1D87006FDD7D /* SVPullToRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

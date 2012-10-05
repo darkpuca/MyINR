@@ -7,8 +7,16 @@
 //
 
 #import "LogViewController.h"
+#import "LogTableViewController.h"
+#import "LogGraphViewController.h"
 
 @interface LogViewController ()
+{
+    LogTableViewController *_tableViewController;
+    LogGraphViewController *_graphViewController;
+}
+
+- (void)backPressed;
 
 @end
 
@@ -26,7 +34,52 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self setTitle:@"INR History"];
+    
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(backPressed)];
+    
+    [self.navigationItem setLeftBarButtonItem:backBarButton];
+
+
+    if (UIDeviceOrientationIsPortrait([[UIDevice currentDevice] orientation]))
+    {
+        if (nil == _tableViewController)
+        {
+            _tableViewController = [[LogTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [_tableViewController.view setFrame:self.view.bounds];
+        }
+        
+        [_tableViewController.view setAlpha:0.0f];
+        [self.view addSubview:_tableViewController.view];
+        
+        [UIView animateWithDuration:0.3f
+                         animations:^{
+                             [_tableViewController.view setAlpha:1.0f];
+                         } completion:^(BOOL finished) {
+                             if (_graphViewController)
+                                 [_graphViewController.view removeFromSuperview];
+                         }];
+    }
+    else
+    {
+        if (nil == _graphViewController)
+        {
+            _graphViewController = [[LogGraphViewController alloc] initWithNibName:@"LogGraphViewController" bundle:nil];
+            [_graphViewController.view setFrame:self.view.bounds];
+        }
+        
+        [_graphViewController.view setAlpha:0.0f];
+        [self.view addSubview:_graphViewController.view];
+        
+        [UIView animateWithDuration:0.3f
+                         animations:^{
+                             [_graphViewController.view setAlpha:1.0f];
+                         } completion:^(BOOL finished) {
+                             if (_tableViewController)
+                                 [_tableViewController.view removeFromSuperview];
+                         }];
+    }
+    
 }
 
 - (void)viewDidUnload
@@ -38,6 +91,15 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+
+#pragma mark - Private Functions
+
+- (void)backPressed
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

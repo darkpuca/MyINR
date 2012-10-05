@@ -7,8 +7,35 @@
 //
 
 #import "LogTableViewController.h"
+#import "AppDelegate.h"
+#import "SVProgressHUD.h"
+#import "SVPullToRefresh.h"
+
+
+@implementation LogTableCell
+
+@synthesize dateLabel = _dateLabel, inrLabel = _inrLabel, memoLabel = _memoLabel;
+
+
+
+@end
+
+
+
+
+
+
+
+
+
+
 
 @interface LogTableViewController ()
+{
+    NSMutableDictionary *_logDict;
+}
+
+- (void)buildLogItems;
 
 @end
 
@@ -27,11 +54,16 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _logDict = [[NSMutableDictionary alloc] init];
+    
+    [self refreshLogs];
+    
+    __block LogTableViewController *me = self;
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [me refreshLogs];
+    }];
+    
 }
 
 - (void)viewDidUnload
@@ -50,24 +82,38 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return [_logDict count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    NSArray *keys = [_logDict allKeys];
+    NSString *key = [keys objectAtIndex:section];
+    NSArray *items = [_logDict valueForKey:key];
+    return [items count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSArray *years = [_logDict allKeys];
+    return [years objectAtIndex:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (nil == cell)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    }
     
-    // Configure the cell...
+    NSArray *keys = [_logDict allKeys];
+    NSArray *items = [_logDict valueForKey:[keys objectAtIndex:[indexPath section]]];
+    NSDictionary *itemDict = [items objectAtIndex:[indexPath row]];
+    
+    [cell.textLabel setText:[itemDict valueForKey:@"date"]];
+    [cell.detailTextLabel setText:[itemDict valueForKey:@"inr"]];
     
     return cell;
 }
@@ -115,13 +161,67 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+
+#pragma mark - Private Functions
+
+- (void)buildLogItems
+{
+    [_logDict removeAllObjects];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSString *sql = @"SELECT CHECK_DATE FROM INR_LOG ORDER BY CHECK_DATE DESC LIMIT 1";
+    FMResultSet *rs = [appDelegate.inrDB executeQuery:sql];
+    if (![rs next]) return;
+    
+    NSInteger lastYear = [[[rs stringForColumnIndex:0] substringToIndex:4] intValue];
+    
+    sql = @"SELECT CHECK_DATE FROM INR_LOG ORDER BY CHECK_DATE ASC LIMIT 1";
+    rs = [appDelegate.inrDB executeQuery:sql];
+    [rs next];
+    
+    NSInteger firstYear = [[[rs stringForColumnIndex:0] substringToIndex:4] intValue];
+    
+    for (NSInteger year = lastYear; year >= firstYear; year--)
+    {
+        NSString *key = [NSString stringWithFormat:@"%i", year];
+        NSMutableArray *yearItems = [_logDict valueForKey:key];
+        if (nil == yearItems)
+        {
+            yearItems = [[NSMutableArray alloc] init];
+            [_logDict setValue:yearItems forKey:key];
+        }
+        
+        NSString *yearSql = [NSString stringWithFormat:@"SELECT CHECK_DATE, INR, MEMO FROM INR_LOG WHERE CHECK_DATE BETWEEN '%i-01-01' AND '%i-12-31' ORDER BY CHECK_DATE DESC", year, year];
+        FMResultSet *yearRs = [appDelegate.inrDB executeQuery:yearSql];
+        while ([yearRs next])
+        {
+            NSMutableDictionary *yearItem = [[NSMutableDictionary alloc] init];
+            [yearItem setValue:[yearRs stringForColumn:@"CHECK_DATE"] forKey:@"date"];
+            [yearItem setValue:[yearRs stringForColumn:@"INR"] forKey:@"inr"];
+            [yearItem setValue:[yearRs stringForColumn:@"MEMO"] forKey:@"memo"];
+            [yearItems addObject:yearItem];
+        }
+    }
+    
+    [SVProgressHUD dismiss];
+}
+
+
+#pragma mark - Public Functions
+
+- (void)refreshLogs
+{
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [self buildLogItems];
+    
+    [self.tableView.pullToRefreshView stopAnimating];
+    
+    [self.tableView reloadData];
 }
 
 @end

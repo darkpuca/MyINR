@@ -173,7 +173,10 @@
 
 - (void)logButtonPressed
 {
+    LogViewController *viewController = [[LogViewController alloc] init];
+    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:viewController];
     
+    [self presentModalViewController:naviController animated:YES];
     
 }
 
