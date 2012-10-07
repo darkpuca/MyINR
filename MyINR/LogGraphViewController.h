@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CorePlot-CocoaTouch.h"
 
-#import "S7GraphView.h"
 
+@interface LogGraphViewController : UIViewController <CPTPlotDataSource, CPTPlotSpaceDelegate>
 
-@interface LogGraphViewController : UIViewController <S7GraphViewDataSource>
 
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;

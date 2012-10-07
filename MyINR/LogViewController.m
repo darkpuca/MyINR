@@ -79,6 +79,7 @@
     }
     else
     {
+//        NSLog(@"landscape navibar height: %f", self.navigationController.navigationBar.frame.size.height);
         if (nil == _graphViewController)
             _graphViewController = [[LogGraphViewController alloc] initWithNibName:@"LogGraphViewController" bundle:nil];
         
