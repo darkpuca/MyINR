@@ -40,15 +40,32 @@
     
     [self.navigationItem setLeftBarButtonItem:backBarButton];
 
+    if (nil == _tableViewController)
+        _tableViewController = [[LogTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    
+    [_tableViewController.view setFrame:self.view.bounds];
+    [self.view addSubview:_tableViewController.view];
+}
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     if (UIDeviceOrientationIsPortrait([[UIDevice currentDevice] orientation]))
     {
         if (nil == _tableViewController)
-        {
             _tableViewController = [[LogTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            [_tableViewController.view setFrame:self.view.bounds];
-        }
         
+        [_tableViewController.view setFrame:self.view.bounds];
         [_tableViewController.view setAlpha:0.0f];
         [self.view addSubview:_tableViewController.view];
         
@@ -63,11 +80,9 @@
     else
     {
         if (nil == _graphViewController)
-        {
             _graphViewController = [[LogGraphViewController alloc] initWithNibName:@"LogGraphViewController" bundle:nil];
-            [_graphViewController.view setFrame:self.view.bounds];
-        }
         
+        [_graphViewController.view setFrame:self.view.bounds];
         [_graphViewController.view setAlpha:0.0f];
         [self.view addSubview:_graphViewController.view];
         
@@ -79,18 +94,7 @@
                                  [_tableViewController.view removeFromSuperview];
                          }];
     }
-    
-}
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LogGraphViewController : UIViewController
+#import "S7GraphView.h"
+
+
+@interface LogGraphViewController : UIViewController <S7GraphViewDataSource>
+
+
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 
 @end

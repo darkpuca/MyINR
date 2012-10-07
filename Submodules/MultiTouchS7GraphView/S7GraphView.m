@@ -176,45 +176,16 @@
 		return;
 	}
 	
-	CGFloat offsetX = _drawAxisY ? 60.0f : 10.0f;
-	CGFloat offsetY = (_drawAxisX || _drawInfo) ? 20.0f : 10.0f;
-	
-	CGFloat minY = 0.0;
-	CGFloat maxY = 0.0;
-	
+	CGFloat offsetX = 40.0f;
+	CGFloat offsetY = 40.0f;
+	CGFloat minY = 0.0f;
+	CGFloat maxY = 4.0f;
 	UIFont *font = [UIFont systemFontOfSize:11.0f];
 	
-	for (NSUInteger plotIndex = 0; plotIndex < numberOfPlots; plotIndex++) {
-		
-		NSArray *values = [self.dataSource graphView:self yValuesForPlot:plotIndex];
-		
-		for (NSUInteger valueIndex = 0; valueIndex < values.count; valueIndex++) {
-			
-			if ([[values objectAtIndex:valueIndex] floatValue] > maxY) {
-				maxY = [[values objectAtIndex:valueIndex] floatValue];
-			}
-		}
-	}
-	
-	if (maxY < 100) {
-		maxY = ceil(maxY / 10) * 10;
-	} 
-	
-	if (maxY > 100 && maxY < 1000) {
-		maxY = ceil(maxY / 100) * 100;
-	} 
-	
-	if (maxY > 1000 && maxY < 10000) {
-		maxY = ceil(maxY / 1000) * 1000;
-	}
-	
-	if (maxY > 10000 && maxY < 100000) {
-		maxY = ceil(maxY / 10000) * 10000;
-	}
-	
-	CGFloat step = (maxY - minY) / 5;
+	CGFloat step = (maxY - minY) / 0.1f;
 	CGFloat stepY = (self.frame.size.height - (offsetY * 2)) / maxY;
-	
+	stepY = 40;
+    
 	for (NSUInteger i = 0; i < 6; i++) {
 		
 		NSUInteger y = (i * step) * stepY;
