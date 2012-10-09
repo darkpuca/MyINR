@@ -111,14 +111,25 @@
 {
     if (nil == info) return NO;
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateVal = [dateFormatter stringFromDate:[info valueForKey:@"date"]];
+    NSString *dateVal = [info valueForKey:@"date"];
     CGFloat inrVal = [[info valueForKey:@"inr"] floatValue];
     NSString *memoVal = (nil == [info valueForKey:@"memo"]) ?@"" : [info valueForKey:@"memo"];
 
     NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO INR_LOG (CHECK_DATE, INR, MEMO) VALUES ('%@', %.1f, '%@')", dateVal, inrVal, memoVal];
     [_inrDB executeUpdate:insertSql];
+    
+    return YES;
+}
+
+- (BOOL)updateLogData:(NSDictionary *)info
+{
+    if (nil == info) return NO;
+    
+    CGFloat inrVal = [[info valueForKey:@"inr"] floatValue];
+    NSString *memoVal = (nil == [info valueForKey:@"memo"]) ?@"" : [info valueForKey:@"memo"];
+    
+    NSString *updateSql = [NSString stringWithFormat:@"UPDATE INR_LOG SET INR=%.1f, MEMO='%@' WHERE ID=%@", inrVal, memoVal, [info valueForKey:@"id"]];
+    [_inrDB executeUpdate:updateSql];
     
     return YES;
 }

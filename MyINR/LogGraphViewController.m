@@ -51,6 +51,8 @@ enum kGraphPlotTypes
 {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor blackColor]];
+    
     _inrValues = [[NSMutableArray alloc] init];
     _minValues = [[NSMutableArray alloc] init];
     _maxValues = [[NSMutableArray alloc] init];

@@ -23,6 +23,7 @@
 
 
 - (BOOL)insertNewData:(NSDictionary *)info;
+- (BOOL)updateLogData:(NSDictionary *)info;
 - (void)updateSettings;
 
 @end

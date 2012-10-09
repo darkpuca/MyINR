@@ -41,6 +41,7 @@
 		1A632A63161D609E00589F27 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A3B161D5F2100589F27 /* libQuickDialog.a */; };
 		1A632A67161D60CD00589F27 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A66161D60CD00589F27 /* CoreLocation.framework */; };
 		1A632A69161D60D500589F27 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A68161D60D500589F27 /* MapKit.framework */; };
+		1A686CD2162428C1001183D3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A686CD1162428C0001183D3 /* MessageUI.framework */; };
 		1A6A6EC61622BE26002C62D1 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6A6EC21622BE26002C62D1 /* info.png */; };
 		1A6A6EC71622BE26002C62D1 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6A6EC31622BE26002C62D1 /* info@2x.png */; };
 		1A6A6EC81622BE26002C62D1 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6A6EC41622BE26002C62D1 /* setting.png */; };
@@ -137,6 +138,7 @@
 		1A632A55161D605C00589F27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1A632A66161D60CD00589F27 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1A632A68161D60D500589F27 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1A686CD1162428C0001183D3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1A6A6EC21622BE26002C62D1 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = MyINR/res/info.png; sourceTree = "<group>"; };
 		1A6A6EC31622BE26002C62D1 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@2x.png"; path = "MyINR/res/info@2x.png"; sourceTree = "<group>"; };
 		1A6A6EC41622BE26002C62D1 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = MyINR/res/setting.png; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A686CD2162428C1001183D3 /* MessageUI.framework in Frameworks */,
 				1AD729A61621281000A241D7 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				1AD049ED161F1DD4006FDD7D /* QuartzCore.framework in Frameworks */,
 				1A9F9C63161E9B8D00CC7377 /* libsqlite3.0.dylib in Frameworks */,
@@ -287,6 +290,7 @@
 		1A63297C161D49AC00589F27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A686CD1162428C0001183D3 /* MessageUI.framework */,
 				1AD049EC161F1DD4006FDD7D /* QuartzCore.framework */,
 				1A9F9C62161E9B8D00CC7377 /* libsqlite3.0.dylib */,
 				1A632A68161D60D500589F27 /* MapKit.framework */,

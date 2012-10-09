@@ -290,7 +290,9 @@
         {
             [_addonLabel setHidden:NO];
             NSString *otherInrString = [rs stringForColumn:@"INR"];
-            CGFloat inr = [[_inrLabel text] floatValue];
+            NSString *addonMsg = [NSString stringWithFormat:@"이전 INR: %@", otherInrString];
+            /*
+             CGFloat inr = [[_inrLabel text] floatValue];
             CGFloat otherInr = [otherInrString floatValue];
             NSString *addonMsg;
             if (inr > otherInr)
@@ -299,14 +301,15 @@
                 addonMsg = [NSString stringWithFormat:@"이전 대비 -%.1f", (otherInr - inr)];
             else if (inr == otherInr)
                 addonMsg = @"이전과 동일";
+            */
             [_addonLabel setText:addonMsg];
         }
     }
     
     if (0 == count)
     {
-        [_dateLabel setText:@"None"];
-        [_inrLabel setText:@"None"];
+        [_dateLabel setText:@"N/A"];
+        [_inrLabel setText:@"N/A"];
         [_inrLabel setTextColor:[UIColor blackColor]];
         [_addonLabel setHidden:YES];
     }

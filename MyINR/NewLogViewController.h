@@ -11,4 +11,6 @@
 
 @interface NewLogViewController : QuickDialogController
 
+@property (nonatomic, strong) NSNumber *targetId;
+
 @end

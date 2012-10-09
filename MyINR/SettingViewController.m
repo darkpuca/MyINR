@@ -13,6 +13,7 @@
 @interface SettingViewController ()
 
 - (void)savePressed:(id)sender;
+- (void)sendMailPressed:(id)sender;
 
 @end
 
@@ -53,6 +54,16 @@
 
 
 
+#pragma mark -
+#pragma mark MFMailComposeViewControllerDelegate Methods
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+
+
 
 #pragma mark - Functions
 
@@ -73,6 +84,32 @@
     [appDelegate updateSettings];
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)sendMailPressed:(id)sender
+{
+    if (![MFMailComposeViewController canSendMail])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"메일 전송이 불가능한 기기입니다."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"확인"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    picker.mailComposeDelegate = self;
+    [picker setSubject:@"MyINR feedback"];
+    [picker setToRecipients:[NSArray arrayWithObject:@"darkpuca@gmail.com"]];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSData *sqlData = [NSData dataWithContentsOfFile:[appDelegate databaseFilePath]];
+    [picker addAttachmentData:sqlData mimeType:@"application/x-sqlite3" fileName:@"MyINR.sqlite"];
+    
+    [self presentModalViewController:picker animated:YES];
+
 }
 
 

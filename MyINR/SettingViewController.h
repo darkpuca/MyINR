@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <QuickDialog/QuickDialog.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 
-@interface SettingViewController : QuickDialogController
+@interface SettingViewController : QuickDialogController <MFMailComposeViewControllerDelegate>
 
 @end

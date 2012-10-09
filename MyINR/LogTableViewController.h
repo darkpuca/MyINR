@@ -8,15 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class LogViewController;
+
 @interface LogTableCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *dateLabel, *inrLabel, *memoLabel;
 
 @end
 
-@interface LogTableViewController : UITableViewController
 
+
+@interface LogTableViewController : UITableViewController <UIAlertViewDelegate>
+
+@property (nonatomic, strong) LogViewController *parentController;
 
 - (void)refreshLogs;
+- (void)addPullToRefreshHandler;
 
 @end

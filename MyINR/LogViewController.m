@@ -9,14 +9,21 @@
 #import "LogViewController.h"
 #import "LogTableViewController.h"
 #import "LogGraphViewController.h"
+#import "SVPullToRefresh.h"
 
 @interface LogViewController ()
 {
     LogTableViewController *_tableViewController;
     LogGraphViewController *_graphViewController;
+    
+    UIBarButtonItem *_editBarButton, *_doneBarButton, *_yearBarButton;
 }
 
 - (void)backPressed;
+- (void)editPressed;
+- (void)donePressed;
+- (void)yearPressed;
+
 
 @end
 
@@ -34,16 +41,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitle:@"INR History"];
+    [self setTitle:@"History"];
     
-    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(backPressed)];
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(backPressed)];
+    
+    _editBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editPressed)];
+    _doneBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donePressed)];
+    _yearBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Year" style:UIBarButtonItemStyleDone target:self action:@selector(yearPressed)];
     
     [self.navigationItem setLeftBarButtonItem:backBarButton];
+    [self.navigationItem setRightBarButtonItem:_editBarButton];
 
     if (nil == _tableViewController)
         _tableViewController = [[LogTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
+    [_tableViewController setParentController:self];
     [_tableViewController.view setFrame:self.view.bounds];
+    
     [self.view addSubview:_tableViewController.view];
 }
 
@@ -51,6 +65,20 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    
+    if (UIDeviceOrientationIsPortrait([[UIDevice currentDevice] orientation]))
+    {
+        if (_tableViewController)
+        {
+            [_tableViewController refreshLogs];
+        }
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -68,6 +96,8 @@
         [_tableViewController.view setFrame:self.view.bounds];
         [_tableViewController.view setAlpha:0.0f];
         [self.view addSubview:_tableViewController.view];
+        
+        [_tableViewController addPullToRefreshHandler];
         
         [UIView animateWithDuration:0.3f
                          animations:^{
@@ -105,5 +135,32 @@
 {
     [self dismissModalViewControllerAnimated:YES];
 }
+
+- (void)editPressed
+{
+    if (_tableViewController)
+    {
+        [_tableViewController.tableView setEditing:YES animated:YES];
+
+        [self.navigationItem setRightBarButtonItem:_doneBarButton];
+    }
+}
+
+- (void)donePressed
+{
+    if (_tableViewController)
+    {
+        [_tableViewController.tableView setEditing:NO animated:YES];
+        
+        [self.navigationItem setRightBarButtonItem:_editBarButton];
+    }
+}
+
+- (void)yearPressed
+{
+    
+}
+
+
 
 @end

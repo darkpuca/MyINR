@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "SVProgressHUD.h"
 #import "SVPullToRefresh.h"
+#import "LogViewController.h"
+#import "NewLogViewController.h"
 
 
 #define kLogTableCellHeight     80
@@ -35,13 +37,19 @@
 @interface LogTableViewController ()
 {
     NSMutableDictionary *_logDict;
+    NSIndexPath *_targetIndexPath;
 }
 
 - (void)buildLogItems;
+- (QRootElement *)createEditLogRoot:(NSDictionary *)logItemDict;
 
 @end
 
+
+
 @implementation LogTableViewController
+
+@synthesize parentController = _parentController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -58,22 +66,25 @@
     
     _logDict = [[NSMutableDictionary alloc] init];
     
-    [self refreshLogs];
-    
-    __block LogTableViewController *me = self;
-    [self.tableView addPullToRefreshWithActionHandler:^{
-        [me refreshLogs];
-    }];
+    [self addPullToRefreshHandler];
     
     [self.tableView setRowHeight:kLogTableCellHeight];
+    [self.tableView setAllowsSelectionDuringEditing:YES];
     
+    [self refreshLogs];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+
+    _parentController = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -127,6 +138,11 @@
     [cell.inrLabel setText:[itemDict valueForKey:@"inr"]];
     [cell.memoLabel setText:[itemDict valueForKey:@"memo"]];
     
+//    if (tableView.editing)
+//        cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    else
+//        cell.editingAccessoryType = UITableViewCellAccessoryNone;
+    
     return cell;
 }
 
@@ -136,21 +152,72 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (tableView.editing)
+    {
+        NSArray *keys = [_logDict allKeys];
+        NSArray *items = [_logDict valueForKey:[keys objectAtIndex:[indexPath section]]];
+        NSDictionary *itemDict = [items objectAtIndex:[indexPath row]];
+        
+        QRootElement *root = [self createEditLogRoot:itemDict];
+        
+        NewLogViewController *viewController = [[NewLogViewController alloc] initWithRoot:root];
+        [viewController setTargetId:[itemDict valueForKey:@"id"]];
+        [_parentController.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
+/*
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (1 == ([indexPath row] % 2)) {
+	if (1 == ([indexPath row] % 2))
 		[cell setBackgroundColor:[UIColor colorWithWhite:0.4 alpha:0.4]];
-	}
-	else {
+	else
 		[cell setBackgroundColor:[UIColor clearColor]];
-	}
 }
+*/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return kLogTableCellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (UITableViewCellEditingStyleDelete == editingStyle)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"확인"
+                                                            message:@"선택한 기록을 삭제하시겠습니까?"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"취소" otherButtonTitles:@"삭제", nil];
+        [alertView show];
+        
+        _targetIndexPath = [indexPath copy];
+    }
+}
+
+
+
+#pragma mark - UIAlertViewDelegate methods
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (1 == buttonIndex)
+    {
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        
+        NSArray *keys = [_logDict allKeys];
+        NSMutableArray *items = [_logDict valueForKey:[keys objectAtIndex:[_targetIndexPath section]]];
+        NSDictionary *itemDict = [items objectAtIndex:[_targetIndexPath row]];
+        
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE FROM INR_LOG WHERE ID=%@", [itemDict valueForKey:@"id"]];
+        if ([appDelegate.inrDB executeUpdate:deleteSql])
+        {
+            [items removeObject:itemDict];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:_targetIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+
+    }
 }
 
 
@@ -184,11 +251,12 @@
             [_logDict setValue:yearItems forKey:key];
         }
         
-        NSString *yearSql = [NSString stringWithFormat:@"SELECT CHECK_DATE, INR, MEMO FROM INR_LOG WHERE CHECK_DATE BETWEEN '%i-01-01' AND '%i-12-31' ORDER BY CHECK_DATE DESC", year, year];
+        NSString *yearSql = [NSString stringWithFormat:@"SELECT ID, CHECK_DATE, INR, MEMO FROM INR_LOG WHERE CHECK_DATE BETWEEN '%i-01-01' AND '%i-12-31' ORDER BY CHECK_DATE DESC, ID DESC", year, year];
         FMResultSet *yearRs = [appDelegate.inrDB executeQuery:yearSql];
         while ([yearRs next])
         {
             NSMutableDictionary *yearItem = [[NSMutableDictionary alloc] init];
+            [yearItem setValue:[NSNumber numberWithInt:[yearRs intForColumn:@"ID"]] forKey:@"id"];
             [yearItem setValue:[yearRs stringForColumn:@"CHECK_DATE"] forKey:@"date"];
             [yearItem setValue:[yearRs stringForColumn:@"INR"] forKey:@"inr"];
             [yearItem setValue:[yearRs stringForColumn:@"MEMO"] forKey:@"memo"];
@@ -197,6 +265,46 @@
     }
     
     [SVProgressHUD dismiss];
+}
+
+- (QRootElement *)createEditLogRoot:(NSDictionary *)logItemDict
+{
+    QRootElement *root = [[QRootElement alloc] init];
+    root.grouped = YES;
+    root.title = @"Edit Record";
+    
+    QSection *dateSection = [[QSection alloc] initWithTitle:@"Date"];
+    QLabelElement *dateElmt = [[QLabelElement alloc] initWithTitle:@"Check date" Value:[logItemDict valueForKey:@"date"]];
+    dateElmt.key = @"date";
+    [dateSection addElement:dateElmt];
+    
+    QSection *inrSection = [[QSection alloc] initWithTitle:@"INR"];
+    QLabelElement *valueElmt = [[QLabelElement alloc] initWithTitle:@"검사수치" Value:[logItemDict valueForKey:@"inr"]];
+    valueElmt.key = @"value";
+    [inrSection addElement:valueElmt];
+    
+    CGFloat inrVal = ([[logItemDict valueForKey:@"inr"] floatValue] - 1.0) / 2.0f;
+    QFloatElement *sliderElmt = [[QFloatElement alloc] initWithValue:inrVal];
+    sliderElmt.key = @"slider";
+    sliderElmt.sliderAction = @"sliderChanged:";
+    [inrSection addElement:sliderElmt];
+    
+    QSection *memoSection = [[QSection alloc] init];
+    QEntryElement *memoElmt = [[QEntryElement alloc] initWithTitle:nil Value:[logItemDict valueForKey:@"memo"] Placeholder:@"memo"];
+    memoElmt.key = @"memo";
+    [memoSection addElement:memoElmt];
+    
+    QSection *btnSection = [[QSection alloc] init];
+    QButtonElement *buttonElmt = [[QButtonElement alloc] initWithTitle:@"Update"];
+    buttonElmt.controllerAction = @"updatePressed:";
+    [btnSection addElement:buttonElmt];
+    
+    [root addSection:dateSection];
+    [root addSection:inrSection];
+    [root addSection:memoSection];
+    [root addSection:btnSection];
+    
+    return root;
 }
 
 
@@ -210,6 +318,14 @@
     [self.tableView.pullToRefreshView stopAnimating];
     
     [self.tableView reloadData];
+}
+
+- (void)addPullToRefreshHandler
+{
+    __block LogTableViewController *me = self;
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [me refreshLogs];
+    }];
 }
 
 @end

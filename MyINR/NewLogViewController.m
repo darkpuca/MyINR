@@ -13,6 +13,7 @@
 
 - (void)sliderChanged:(UISlider *)sender;
 - (void)registPressed:(id)sender;
+- (void)updatePressed:(id)sender;
 
 @end
 
@@ -36,8 +37,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    
+    _targetId = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -66,8 +67,12 @@
     QLabelElement *valueElmt = (QLabelElement *)[self.root elementWithKey:@"value"];
     QEntryElement *memoElmt = (QEntryElement *)[self.root elementWithKey:@"memo"];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateVal = [dateFormatter stringFromDate:dateElmt.dateValue];
+
     NSMutableDictionary *newInfo = [[NSMutableDictionary alloc] initWithCapacity:3];
-    [newInfo setValue:dateElmt.dateValue forKey:@"date"];
+    [newInfo setValue:dateVal forKey:@"date"];
     [newInfo setValue:[NSNumber numberWithFloat:[[valueElmt value] floatValue]] forKey:@"inr"];
     [newInfo setValue:memoElmt.textValue forKey:@"memo"];
     
@@ -79,5 +84,20 @@
 //    NSLog(@"date: %@, inr: %@, memo: %@", dateElmt.dateValue, valueElmt.value, memoElmt.textValue);
 }
 
+- (void)updatePressed:(id)sender
+{
+    QLabelElement *valueElmt = (QLabelElement *)[self.root elementWithKey:@"value"];
+    QEntryElement *memoElmt = (QEntryElement *)[self.root elementWithKey:@"memo"];
+    
+    NSMutableDictionary *newInfo = [[NSMutableDictionary alloc] initWithCapacity:3];
+    [newInfo setValue:_targetId forKey:@"id"];
+    [newInfo setValue:[NSNumber numberWithFloat:[[valueElmt value] floatValue]] forKey:@"inr"];
+    [newInfo setValue:memoElmt.textValue forKey:@"memo"];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate updateLogData:newInfo];
+
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end
