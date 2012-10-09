@@ -219,26 +219,26 @@ enum kGraphPlotTypes
     
     // configure lines
     CPTMutableLineStyle *inrLineStyle = [[CPTMutableLineStyle alloc] init];
-    [inrLineStyle setLineColor:[CPTColor lightGrayColor]];
+    [inrLineStyle setLineColor:[[CPTColor redColor] colorWithAlphaComponent:0.8f]];
     [inrLineStyle setLineWidth:6.0f];
     [_inrPlot setDataLineStyle:inrLineStyle];
     
     CPTMutableLineStyle *inrSymbolLineStyle = [[CPTMutableLineStyle alloc] init];
     [inrSymbolLineStyle setLineColor:inrLineStyle.lineColor];
     CPTPlotSymbol *inrSymbol = [CPTPlotSymbol ellipsePlotSymbol];
-    [inrSymbol setFill:[CPTFill fillWithColor:[CPTColor whiteColor]]];
+    [inrSymbol setFill:[CPTFill fillWithColor:[CPTColor redColor]]];
     [inrSymbol setLineStyle:inrSymbolLineStyle];
     [inrSymbol setSize:CGSizeMake(8.0f, 8.0f)];
     [_inrPlot setPlotSymbol:inrSymbol];
     
     CPTMutableLineStyle *minLineStyle = [[CPTMutableLineStyle alloc] init];
-    [minLineStyle setLineColor:[CPTColor grayColor]];
-    [minLineStyle setLineWidth:4.0f];
+    [minLineStyle setLineColor:[[CPTColor yellowColor] colorWithAlphaComponent:0.6f]];
+    [minLineStyle setLineWidth:2.0f];
     [_minPlot setDataLineStyle:minLineStyle];
     
     CPTMutableLineStyle *maxLineStyle = [[CPTMutableLineStyle alloc] init];
-    [maxLineStyle setLineColor:[CPTColor grayColor]];
-    [maxLineStyle setLineWidth:4.0f];
+    [maxLineStyle setLineColor:[[CPTColor yellowColor] colorWithAlphaComponent:0.6f]];
+    [maxLineStyle setLineWidth:2.0f];
     [_maxPlot setDataLineStyle:maxLineStyle];
     
     // configure axis styles
@@ -294,8 +294,6 @@ enum kGraphPlotTypes
     [axisX setAxisLabels:xLabels];
     [axisX setMajorTickLocations:xLocations];
 //    [axisX setAxisConstraints:[CPTConstraints constraintWithLowerOffset:0.0f]];
-    [axisX setMajorGridLineStyle:gridLineStyle];
-    [axisX setGridLinesRange:plotSpace.globalXRange];
     
     CPTXYAxis *axisY = axisSet.yAxis;
     [axisY setTitle:@"INR"];

@@ -5,6 +5,7 @@
 //  Created by darkpuca on 10/4/12.
 //  Copyright (c) 2012 darkpuca. All rights reserved.
 //
+#import <QuartzCore/QuartzCore.h>
 
 #import "MainViewController.h"
 #import "AppDelegate.h"
@@ -14,9 +15,13 @@
 
 
 @interface MainViewController ()
-
+{
+    BOOL _isNiceINR;
+}
 - (QRootElement *)createNewLogRoot;
 - (QRootElement *)createSettingRoot;
+
+- (void)startNiceINRAnimation;
 
 @end
 
@@ -25,6 +30,7 @@
 @implementation MainViewController
 
 @synthesize nameLabel = _nameLabel, dateLabel = _dateLabel, inrLabel = _inrLabel, addonLabel = _addonLabel, minLabel = _minLabel, maxLabel = _maxLabel;
+@synthesize nameView = _nameView, dateView = _dateView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +51,17 @@
     UIBarButtonItem *logBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(logButtonPressed)];
     [self.navigationItem setRightBarButtonItem:newBarButton];
     [self.navigationItem setLeftBarButtonItem:logBarButton];
+    
+    [_nameView setAlpha:0.4f];
+    [_nameView.layer setCornerRadius:12.0f];
+    [_nameView.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    [_nameView.layer setBorderWidth:4.0f];
+    
+    [_dateView.layer setCornerRadius:12.0f];
+    [_dateView.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    [_dateView.layer setBorderWidth:4.0f];
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"patternBg"]]];
 }
 
 - (void)viewDidUnload
@@ -57,12 +74,26 @@
     _addonLabel = nil;
     _minLabel = nil;
     _maxLabel = nil;
+    _nameView = nil;
+    _dateView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self updateLastLog];
+    
+    if (_isNiceINR)
+        [_inrLabel setTransform:CGAffineTransformMakeScale(1.4f, 1.4f)];
+//        [self startNiceINRAnimation];
+    else
+        [_inrLabel setTransform:CGAffineTransformMakeScale(1.0f, 1.0f)];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_inrLabel.layer removeAllAnimations];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -159,13 +190,31 @@
     buttonElmt.controllerAction = @"savePressed:";
     [btnSection addElement:buttonElmt];
     
+    QSection *supportSection = [[QSection alloc] initWithTitle:@"Customer Support"];
+    QButtonElement *sendmailElmt = [[QButtonElement alloc] initWithTitle:@"Send mail with data"];
+    [sendmailElmt setControllerAction:@"sendMailPressed:"];
+    [supportSection addElement:sendmailElmt];
+    
     [root addSection:userSection];
     [root addSection:inrSection];
     [root addSection:btnSection];
+    [root addSection:supportSection];
     
     return root;
 }
 
+- (void)startNiceINRAnimation
+{
+    [UIView animateWithDuration:0.4f
+                          delay:0.0f
+                        options:UIViewAnimationOptionRepeat|UIViewAnimationOptionAutoreverse|UIViewAnimationOptionCurveEaseOut|UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         [_inrLabel setTransform:CGAffineTransformMakeScale(1.4f, 1.4f)];
+                     } completion:^(BOOL finished) {
+                         [_inrLabel.layer removeAllAnimations];
+                     }];
+
+}
 
 
 
@@ -228,11 +277,8 @@
             
             if (min <= inr && max >= inr)
             {
-                [_inrLabel setTextColor:[UIColor blueColor]];
-                if (target == inr)
-                    [_inrLabel setFont:[UIFont boldSystemFontOfSize:32.0f]];
-                else
-                    [_inrLabel setFont:[UIFont boldSystemFontOfSize:28.0f]];
+                [_inrLabel setTextColor:[UIColor whiteColor]];
+                _isNiceINR = target == inr;
             }
             else
             {

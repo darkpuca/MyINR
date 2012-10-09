@@ -36,7 +36,7 @@
     [super viewDidLoad];
     [self setTitle:@"INR History"];
     
-    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(backPressed)];
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(backPressed)];
     
     [self.navigationItem setLeftBarButtonItem:backBarButton];
 
@@ -79,7 +79,6 @@
     }
     else
     {
-//        NSLog(@"landscape navibar height: %f", self.navigationController.navigationBar.frame.size.height);
         if (nil == _graphViewController)
             _graphViewController = [[LogGraphViewController alloc] initWithNibName:@"LogGraphViewController" bundle:nil];
         

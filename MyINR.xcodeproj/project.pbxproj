@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A47F04D1622CD9900E77332 /* cellDate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F04B1622CD9900E77332 /* cellDate.png */; };
+		1A47F04E1622CD9900E77332 /* cellDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F04C1622CD9900E77332 /* cellDate@2x.png */; };
+		1A47F0511622CE8700E77332 /* cellValBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F04F1622CE8700E77332 /* cellValBg.png */; };
+		1A47F0521622CE8700E77332 /* cellValBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F0501622CE8700E77332 /* cellValBg@2x.png */; };
+		1A47F0551622D68500E77332 /* mainValBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F0531622D68500E77332 /* mainValBg.png */; };
+		1A47F0561622D68500E77332 /* mainValBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F0541622D68500E77332 /* mainValBg@2x.png */; };
+		1A47F0591622D76900E77332 /* mainDate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F0571622D76900E77332 /* mainDate.png */; };
+		1A47F05A1622D76900E77332 /* mainDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F0581622D76900E77332 /* mainDate@2x.png */; };
+		1A47F05D1622DB0B00E77332 /* patternBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F05B1622DB0B00E77332 /* patternBg.png */; };
+		1A47F05E1622DB0B00E77332 /* patternBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F05C1622DB0B00E77332 /* patternBg@2x.png */; };
 		1A63297E161D49AC00589F27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A63297D161D49AC00589F27 /* UIKit.framework */; };
 		1A632980161D49AC00589F27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A63297F161D49AC00589F27 /* Foundation.framework */; };
 		1A632982161D49AC00589F27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632981161D49AC00589F27 /* CoreGraphics.framework */; };
@@ -31,6 +41,12 @@
 		1A632A63161D609E00589F27 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A3B161D5F2100589F27 /* libQuickDialog.a */; };
 		1A632A67161D60CD00589F27 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A66161D60CD00589F27 /* CoreLocation.framework */; };
 		1A632A69161D60D500589F27 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A632A68161D60D500589F27 /* MapKit.framework */; };
+		1A6A6EC61622BE26002C62D1 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6A6EC21622BE26002C62D1 /* info.png */; };
+		1A6A6EC71622BE26002C62D1 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6A6EC31622BE26002C62D1 /* info@2x.png */; };
+		1A6A6EC81622BE26002C62D1 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6A6EC41622BE26002C62D1 /* setting.png */; };
+		1A6A6EC91622BE26002C62D1 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A6A6EC51622BE26002C62D1 /* setting@2x.png */; };
+		1A8FCFB3162272D7001115FD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8FCFB1162272D7001115FD /* icon.png */; };
+		1A8FCFB4162272D7001115FD /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8FCFB2162272D7001115FD /* icon@2x.png */; };
 		1A9F9C63161E9B8D00CC7377 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9F9C62161E9B8D00CC7377 /* libsqlite3.0.dylib */; };
 		1A9F9C70161E9CB200CC7377 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F9C66161E9CB200CC7377 /* FMDatabase.m */; };
 		1A9F9C71161E9CB200CC7377 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F9C68161E9CB200CC7377 /* FMDatabaseAdditions.m */; };
@@ -71,6 +87,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A47F04B1622CD9900E77332 /* cellDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cellDate.png; path = MyINR/res/cellDate.png; sourceTree = "<group>"; };
+		1A47F04C1622CD9900E77332 /* cellDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cellDate@2x.png"; path = "MyINR/res/cellDate@2x.png"; sourceTree = "<group>"; };
+		1A47F04F1622CE8700E77332 /* cellValBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cellValBg.png; path = MyINR/res/cellValBg.png; sourceTree = "<group>"; };
+		1A47F0501622CE8700E77332 /* cellValBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cellValBg@2x.png"; path = "MyINR/res/cellValBg@2x.png"; sourceTree = "<group>"; };
+		1A47F0531622D68500E77332 /* mainValBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainValBg.png; path = MyINR/res/mainValBg.png; sourceTree = "<group>"; };
+		1A47F0541622D68500E77332 /* mainValBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mainValBg@2x.png"; path = "MyINR/res/mainValBg@2x.png"; sourceTree = "<group>"; };
+		1A47F0571622D76900E77332 /* mainDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainDate.png; path = MyINR/res/mainDate.png; sourceTree = "<group>"; };
+		1A47F0581622D76900E77332 /* mainDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mainDate@2x.png"; path = "MyINR/res/mainDate@2x.png"; sourceTree = "<group>"; };
+		1A47F05B1622DB0B00E77332 /* patternBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = patternBg.png; path = MyINR/res/patternBg.png; sourceTree = "<group>"; };
+		1A47F05C1622DB0B00E77332 /* patternBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "patternBg@2x.png"; path = "MyINR/res/patternBg@2x.png"; sourceTree = "<group>"; };
 		1A632979161D49AC00589F27 /* MyINR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyINR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A63297D161D49AC00589F27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1A63297F161D49AC00589F27 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,6 +137,12 @@
 		1A632A55161D605C00589F27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1A632A66161D60CD00589F27 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1A632A68161D60D500589F27 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1A6A6EC21622BE26002C62D1 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = MyINR/res/info.png; sourceTree = "<group>"; };
+		1A6A6EC31622BE26002C62D1 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@2x.png"; path = "MyINR/res/info@2x.png"; sourceTree = "<group>"; };
+		1A6A6EC41622BE26002C62D1 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = MyINR/res/setting.png; sourceTree = "<group>"; };
+		1A6A6EC51622BE26002C62D1 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "setting@2x.png"; path = "MyINR/res/setting@2x.png"; sourceTree = "<group>"; };
+		1A8FCFB1162272D7001115FD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = MyINR/icon.png; sourceTree = "<group>"; };
+		1A8FCFB2162272D7001115FD /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "MyINR/icon@2x.png"; sourceTree = "<group>"; };
 		1A9F9C62161E9B8D00CC7377 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		1A9F9C65161E9CB200CC7377 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		1A9F9C66161E9CB200CC7377 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -391,6 +423,22 @@
 		1A9F9CC1161EA51800CC7377 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A8FCFB1162272D7001115FD /* icon.png */,
+				1A8FCFB2162272D7001115FD /* icon@2x.png */,
+				1A6A6EC21622BE26002C62D1 /* info.png */,
+				1A6A6EC31622BE26002C62D1 /* info@2x.png */,
+				1A6A6EC41622BE26002C62D1 /* setting.png */,
+				1A6A6EC51622BE26002C62D1 /* setting@2x.png */,
+				1A47F04B1622CD9900E77332 /* cellDate.png */,
+				1A47F04C1622CD9900E77332 /* cellDate@2x.png */,
+				1A47F04F1622CE8700E77332 /* cellValBg.png */,
+				1A47F0501622CE8700E77332 /* cellValBg@2x.png */,
+				1A47F0531622D68500E77332 /* mainValBg.png */,
+				1A47F0541622D68500E77332 /* mainValBg@2x.png */,
+				1A47F0571622D76900E77332 /* mainDate.png */,
+				1A47F0581622D76900E77332 /* mainDate@2x.png */,
+				1A47F05B1622DB0B00E77332 /* patternBg.png */,
+				1A47F05C1622DB0B00E77332 /* patternBg@2x.png */,
 				1A9F9CC2161EA53400CC7377 /* MyINR.sqlite */,
 			);
 			name = Resources;
@@ -595,6 +643,22 @@
 				1A9F9CC3161EA53400CC7377 /* MyINR.sqlite in Resources */,
 				1AD049CD161F1AFE006FDD7D /* SVProgressHUD.bundle in Resources */,
 				1AD049EF161F3B0F006FDD7D /* CustomCells.xib in Resources */,
+				1A8FCFB3162272D7001115FD /* icon.png in Resources */,
+				1A8FCFB4162272D7001115FD /* icon@2x.png in Resources */,
+				1A6A6EC61622BE26002C62D1 /* info.png in Resources */,
+				1A6A6EC71622BE26002C62D1 /* info@2x.png in Resources */,
+				1A6A6EC81622BE26002C62D1 /* setting.png in Resources */,
+				1A6A6EC91622BE26002C62D1 /* setting@2x.png in Resources */,
+				1A47F04D1622CD9900E77332 /* cellDate.png in Resources */,
+				1A47F04E1622CD9900E77332 /* cellDate@2x.png in Resources */,
+				1A47F0511622CE8700E77332 /* cellValBg.png in Resources */,
+				1A47F0521622CE8700E77332 /* cellValBg@2x.png in Resources */,
+				1A47F0551622D68500E77332 /* mainValBg.png in Resources */,
+				1A47F0561622D68500E77332 /* mainValBg@2x.png in Resources */,
+				1A47F0591622D76900E77332 /* mainDate.png in Resources */,
+				1A47F05A1622D76900E77332 /* mainDate@2x.png in Resources */,
+				1A47F05D1622DB0B00E77332 /* patternBg.png in Resources */,
+				1A47F05E1622DB0B00E77332 /* patternBg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +769,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: DongKyu Kim (MM4DX7RET9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyINR/MyINR-Prefix.pch";
 				INFOPLIST_FILE = "MyINR/MyINR-Info.plist";
@@ -717,6 +782,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "33883DD2-F22A-4FAF-8108-539AB921B01E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -725,6 +791,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: STRASTAR Co. Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyINR/MyINR-Prefix.pch";
 				INFOPLIST_FILE = "MyINR/MyINR-Info.plist";
@@ -737,6 +804,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "62DA696C-0AFA-464B-912E-972F0AF206AD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

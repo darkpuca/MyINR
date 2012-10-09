@@ -12,6 +12,8 @@
 #import "SVPullToRefresh.h"
 
 
+#define kLogTableCellHeight     80
+
 @implementation LogTableCell
 
 @synthesize dateLabel = _dateLabel, inrLabel = _inrLabel, memoLabel = _memoLabel;
@@ -53,7 +55,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     
     _logDict = [[NSMutableDictionary alloc] init];
     
@@ -63,6 +64,8 @@
     [self.tableView addPullToRefreshWithActionHandler:^{
         [me refreshLogs];
     }];
+    
+    [self.tableView setRowHeight:kLogTableCellHeight];
     
 }
 
@@ -101,19 +104,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"LogCell";
+    LogTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (nil == cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        NSArray *xib = [[NSBundle mainBundle] loadNibNamed:@"CustomCells" owner:self options:nil];
+		for (id oneObject in xib)
+		{
+			if ([oneObject isKindOfClass:[LogTableCell class]])
+			{
+				cell = (LogTableCell *)oneObject;
+				break;
+			}
+		}
     }
     
     NSArray *keys = [_logDict allKeys];
     NSArray *items = [_logDict valueForKey:[keys objectAtIndex:[indexPath section]]];
     NSDictionary *itemDict = [items objectAtIndex:[indexPath row]];
     
-    [cell.textLabel setText:[itemDict valueForKey:@"date"]];
-    [cell.detailTextLabel setText:[itemDict valueForKey:@"inr"]];
+    [cell.dateLabel setText:[itemDict valueForKey:@"date"]];
+    [cell.inrLabel setText:[itemDict valueForKey:@"inr"]];
+    [cell.memoLabel setText:[itemDict valueForKey:@"memo"]];
     
     return cell;
 }
@@ -124,7 +136,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (1 == ([indexPath row] % 2)) {
+		[cell setBackgroundColor:[UIColor colorWithWhite:0.4 alpha:0.4]];
+	}
+	else {
+		[cell setBackgroundColor:[UIColor clearColor]];
+	}
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kLogTableCellHeight;
 }
 
 
