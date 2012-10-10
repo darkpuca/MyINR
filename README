@@ -1,0 +1,14 @@
+## MyINR for iOS ##
+# featues #
+- INR log management
+- INR log list
+- INR log graph
+
+# submodules #
+- CorePlot
+- fmdb
+- QuickDialog
+- SVProgressHUD
+- SVPullToRefresh
+- TBXML
+
