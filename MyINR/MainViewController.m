@@ -168,7 +168,7 @@
     
     QSection *inrSection = [[QSection alloc] init];
     [inrSection setTitle:@"INR"];
-    [inrSection setFooter:@"담당 주치의에게 권고 받은 적정 INR을 설정해주세요."];
+    [inrSection setFooter:@"권고 받은 적정 INR을 설정해주세요."];
     QPickerElement *targetElmt = [[QPickerElement alloc] initWithTitle:@"목표 INR"
                                                                  items:[NSArray arrayWithObject:valItems]
                                                                  value:[appDelegate.settings valueForKey:@"target"]];

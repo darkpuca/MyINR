@@ -106,6 +106,11 @@
                              if (_graphViewController)
                                  [_graphViewController.view removeFromSuperview];
                          }];
+        
+        if (_tableViewController.tableView.editing)
+            [self.navigationItem setRightBarButtonItem:_doneBarButton];
+        else
+            [self.navigationItem setRightBarButtonItem:_editBarButton];
     }
     else
     {
@@ -123,6 +128,8 @@
                              if (_tableViewController)
                                  [_tableViewController.view removeFromSuperview];
                          }];
+        
+        [self.navigationItem setRightBarButtonItem:_yearBarButton];
     }
 
 }
