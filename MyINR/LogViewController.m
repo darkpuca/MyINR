@@ -47,7 +47,7 @@
     
     _editBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editPressed)];
     _doneBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donePressed)];
-    _yearBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Year" style:UIBarButtonItemStyleDone target:self action:@selector(yearPressed)];
+    _yearBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Year" style:UIBarButtonItemStyleBordered target:self action:@selector(yearPressed)];
     
     [self.navigationItem setLeftBarButtonItem:backBarButton];
     [self.navigationItem setRightBarButtonItem:_editBarButton];
@@ -165,7 +165,8 @@
 
 - (void)yearPressed
 {
-    
+    if (_graphViewController)
+        [_graphViewController showYearActionSheet];
 }
 
 

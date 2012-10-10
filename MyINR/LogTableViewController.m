@@ -36,7 +36,7 @@
 
 @interface LogTableViewController ()
 {
-    NSMutableDictionary *_logDict;
+    NSMutableArray *_logYears;
     NSIndexPath *_targetIndexPath;
 }
 
@@ -64,7 +64,7 @@
 {
     [super viewDidLoad];
     
-    _logDict = [[NSMutableDictionary alloc] init];
+    _logYears = [[NSMutableArray alloc] init];
     
     [self addPullToRefreshHandler];
     
@@ -96,21 +96,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_logDict count];
+    return [_logYears count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *keys = [_logDict allKeys];
-    NSString *key = [keys objectAtIndex:section];
-    NSArray *items = [_logDict valueForKey:key];
+    NSDictionary *yearDict = [_logYears objectAtIndex:section];
+    NSArray *items = [yearDict valueForKey:@"items"];
     return [items count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray *years = [_logDict allKeys];
-    return [years objectAtIndex:section];
+    NSDictionary *yearDict = [_logYears objectAtIndex:section];
+    return [[yearDict valueForKey:@"year"] stringValue];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -130,8 +129,8 @@
 		}
     }
     
-    NSArray *keys = [_logDict allKeys];
-    NSArray *items = [_logDict valueForKey:[keys objectAtIndex:[indexPath section]]];
+    NSDictionary *yearDict = [_logYears objectAtIndex:[indexPath section]];
+    NSArray *items = [yearDict valueForKey:@"items"];
     NSDictionary *itemDict = [items objectAtIndex:[indexPath row]];
     
     [cell.dateLabel setText:[itemDict valueForKey:@"date"]];
@@ -155,8 +154,8 @@
     
     if (tableView.editing)
     {
-        NSArray *keys = [_logDict allKeys];
-        NSArray *items = [_logDict valueForKey:[keys objectAtIndex:[indexPath section]]];
+        NSDictionary *yearDict = [_logYears objectAtIndex:[indexPath section]];
+        NSArray *items = [yearDict valueForKey:@"items"];
         NSDictionary *itemDict = [items objectAtIndex:[indexPath row]];
         
         QRootElement *root = [self createEditLogRoot:itemDict];
@@ -205,11 +204,11 @@
     if (1 == buttonIndex)
     {
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        
-        NSArray *keys = [_logDict allKeys];
-        NSMutableArray *items = [_logDict valueForKey:[keys objectAtIndex:[_targetIndexPath section]]];
+
+        NSDictionary *yearDict = [_logYears objectAtIndex:[_targetIndexPath section]];
+        NSMutableArray *items = [yearDict valueForKey:@"items"];
         NSDictionary *itemDict = [items objectAtIndex:[_targetIndexPath row]];
-        
+
         NSString *deleteSql = [NSString stringWithFormat:@"DELETE FROM INR_LOG WHERE ID=%@", [itemDict valueForKey:@"id"]];
         if ([appDelegate.inrDB executeUpdate:deleteSql])
         {
@@ -225,7 +224,7 @@
 
 - (void)buildLogItems
 {
-    [_logDict removeAllObjects];
+    [_logYears removeAllObjects];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -243,24 +242,31 @@
     
     for (NSInteger year = lastYear; year >= firstYear; year--)
     {
-        NSString *key = [NSString stringWithFormat:@"%i", year];
-        NSMutableArray *yearItems = [_logDict valueForKey:key];
-        if (nil == yearItems)
+        NSString *countSql = [NSString stringWithFormat:@"SELECT COUNT(ID) FROM INR_LOG WHERE CHECK_DATE BETWEEN '%i-01-01' AND '%i-12-31'", year, year];
+        FMResultSet *countRs = [appDelegate.inrDB executeQuery:countSql];
+        if ([countRs next])
         {
-            yearItems = [[NSMutableArray alloc] init];
-            [_logDict setValue:yearItems forKey:key];
-        }
-        
-        NSString *yearSql = [NSString stringWithFormat:@"SELECT ID, CHECK_DATE, INR, MEMO FROM INR_LOG WHERE CHECK_DATE BETWEEN '%i-01-01' AND '%i-12-31' ORDER BY CHECK_DATE DESC, ID DESC", year, year];
-        FMResultSet *yearRs = [appDelegate.inrDB executeQuery:yearSql];
-        while ([yearRs next])
-        {
-            NSMutableDictionary *yearItem = [[NSMutableDictionary alloc] init];
-            [yearItem setValue:[NSNumber numberWithInt:[yearRs intForColumn:@"ID"]] forKey:@"id"];
-            [yearItem setValue:[yearRs stringForColumn:@"CHECK_DATE"] forKey:@"date"];
-            [yearItem setValue:[yearRs stringForColumn:@"INR"] forKey:@"inr"];
-            [yearItem setValue:[yearRs stringForColumn:@"MEMO"] forKey:@"memo"];
-            [yearItems addObject:yearItem];
+            NSInteger rsCount = [countRs intForColumnIndex:0];
+            if (rsCount)
+            {
+                NSMutableDictionary *yearDict = [[NSMutableDictionary alloc] init];
+                [yearDict setValue:[NSNumber numberWithInt:year] forKey:@"year"];
+                NSMutableArray *yearItems =[[NSMutableArray alloc] init];
+                [yearDict setValue:yearItems forKey:@"items"];
+                [_logYears addObject:yearDict];
+                
+                NSString *yearSql = [NSString stringWithFormat:@"SELECT ID, CHECK_DATE, INR, MEMO FROM INR_LOG WHERE CHECK_DATE BETWEEN '%i-01-01' AND '%i-12-31' ORDER BY CHECK_DATE DESC, ID DESC", year, year];
+                FMResultSet *yearRs = [appDelegate.inrDB executeQuery:yearSql];
+                while ([yearRs next])
+                {
+                    NSMutableDictionary *yearItem = [[NSMutableDictionary alloc] init];
+                    [yearItem setValue:[NSNumber numberWithInt:[yearRs intForColumn:@"ID"]] forKey:@"id"];
+                    [yearItem setValue:[yearRs stringForColumn:@"CHECK_DATE"] forKey:@"date"];
+                    [yearItem setValue:[yearRs stringForColumn:@"INR"] forKey:@"inr"];
+                    [yearItem setValue:[yearRs stringForColumn:@"MEMO"] forKey:@"memo"];
+                    [yearItems addObject:yearItem];
+                }
+            }
         }
     }
     

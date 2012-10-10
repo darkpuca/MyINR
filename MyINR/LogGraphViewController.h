@@ -10,10 +10,11 @@
 #import "CorePlot-CocoaTouch.h"
 
 
-@interface LogGraphViewController : UIViewController <CPTPlotDataSource, CPTPlotSpaceDelegate>
-
-
+@interface LogGraphViewController : UIViewController <CPTPlotDataSource, CPTScatterPlotDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+
+
+- (void)showYearActionSheet;
 
 @end
