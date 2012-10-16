@@ -12,6 +12,7 @@
 #import "NewLogViewController.h"
 #import "LogViewController.h"
 #import "SettingViewController.h"
+#import "AboutViewController.h"
 
 
 @interface MainViewController ()
@@ -242,6 +243,13 @@
     QRootElement *root = [self createSettingRoot];
     SettingViewController *viewController = [[SettingViewController alloc] initWithRoot:root];
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (IBAction)aboutButtonPressed
+{
+    AboutViewController *viewController = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
+    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [self.navigationController presentModalViewController:naviController animated:YES];
 }
 
 - (void)updateLastLog

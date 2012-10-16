@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A4588AE162CEDDA009C2866 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4588AC162CEDDA009C2866 /* AboutViewController.m */; };
+		1A4588AF162CEDDA009C2866 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588AD162CEDDA009C2866 /* AboutViewController.xib */; };
+		1A4588B1162CF2E8009C2866 /* profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588B0162CF2E8009C2866 /* profile.jpg */; };
+		1A4588B8162CF67B009C2866 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588B2162CF67B009C2866 /* facebook.png */; };
+		1A4588B9162CF67B009C2866 /* facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588B3162CF67B009C2866 /* facebook@2x.png */; };
+		1A4588BA162CF67B009C2866 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588B4162CF67B009C2866 /* github.png */; };
+		1A4588BB162CF67B009C2866 /* github@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588B5162CF67B009C2866 /* github@2x.png */; };
+		1A4588BC162CF67B009C2866 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588B6162CF67B009C2866 /* twitter.png */; };
+		1A4588BD162CF67B009C2866 /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588B7162CF67B009C2866 /* twitter@2x.png */; };
+		1A4588C0162CF7E8009C2866 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588BE162CF7E8009C2866 /* email.png */; };
+		1A4588C1162CF7E8009C2866 /* email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4588BF162CF7E8009C2866 /* email@2x.png */; };
 		1A47F04D1622CD9900E77332 /* cellDate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F04B1622CD9900E77332 /* cellDate.png */; };
 		1A47F04E1622CD9900E77332 /* cellDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F04C1622CD9900E77332 /* cellDate@2x.png */; };
 		1A47F0511622CE8700E77332 /* cellValBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A47F04F1622CE8700E77332 /* cellValBg.png */; };
@@ -88,6 +99,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A4588AB162CEDDA009C2866 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		1A4588AC162CEDDA009C2866 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		1A4588AD162CEDDA009C2866 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		1A4588B0162CF2E8009C2866 /* profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = profile.jpg; path = MyINR/res/profile.jpg; sourceTree = "<group>"; };
+		1A4588B2162CF67B009C2866 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = MyINR/res/facebook.png; sourceTree = "<group>"; };
+		1A4588B3162CF67B009C2866 /* facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facebook@2x.png"; path = "MyINR/res/facebook@2x.png"; sourceTree = "<group>"; };
+		1A4588B4162CF67B009C2866 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = MyINR/res/github.png; sourceTree = "<group>"; };
+		1A4588B5162CF67B009C2866 /* github@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "github@2x.png"; path = "MyINR/res/github@2x.png"; sourceTree = "<group>"; };
+		1A4588B6162CF67B009C2866 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = MyINR/res/twitter.png; sourceTree = "<group>"; };
+		1A4588B7162CF67B009C2866 /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter@2x.png"; path = "MyINR/res/twitter@2x.png"; sourceTree = "<group>"; };
+		1A4588BE162CF7E8009C2866 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email.png; path = MyINR/res/email.png; sourceTree = "<group>"; };
+		1A4588BF162CF7E8009C2866 /* email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "email@2x.png"; path = "MyINR/res/email@2x.png"; sourceTree = "<group>"; };
 		1A47F04B1622CD9900E77332 /* cellDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cellDate.png; path = MyINR/res/cellDate.png; sourceTree = "<group>"; };
 		1A47F04C1622CD9900E77332 /* cellDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cellDate@2x.png"; path = "MyINR/res/cellDate@2x.png"; sourceTree = "<group>"; };
 		1A47F04F1622CE8700E77332 /* cellValBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cellValBg.png; path = MyINR/res/cellValBg.png; sourceTree = "<group>"; };
@@ -322,6 +345,9 @@
 				1A6329A5161D4CAD00589F27 /* SettingViewController.m */,
 				1A6329A7161D4CD000589F27 /* NewLogViewController.h */,
 				1A6329A8161D4CD000589F27 /* NewLogViewController.m */,
+				1A4588AB162CEDDA009C2866 /* AboutViewController.h */,
+				1A4588AC162CEDDA009C2866 /* AboutViewController.m */,
+				1A4588AD162CEDDA009C2866 /* AboutViewController.xib */,
 				1AD049EE161F3B0F006FDD7D /* CustomCells.xib */,
 				1A632984161D49AC00589F27 /* Supporting Files */,
 			);
@@ -443,6 +469,15 @@
 				1A47F0581622D76900E77332 /* mainDate@2x.png */,
 				1A47F05B1622DB0B00E77332 /* patternBg.png */,
 				1A47F05C1622DB0B00E77332 /* patternBg@2x.png */,
+				1A4588B0162CF2E8009C2866 /* profile.jpg */,
+				1A4588B2162CF67B009C2866 /* facebook.png */,
+				1A4588B3162CF67B009C2866 /* facebook@2x.png */,
+				1A4588B4162CF67B009C2866 /* github.png */,
+				1A4588B5162CF67B009C2866 /* github@2x.png */,
+				1A4588B6162CF67B009C2866 /* twitter.png */,
+				1A4588B7162CF67B009C2866 /* twitter@2x.png */,
+				1A4588BE162CF7E8009C2866 /* email.png */,
+				1A4588BF162CF7E8009C2866 /* email@2x.png */,
 				1A9F9CC2161EA53400CC7377 /* MyINR.sqlite */,
 			);
 			name = Resources;
@@ -663,6 +698,16 @@
 				1A47F05A1622D76900E77332 /* mainDate@2x.png in Resources */,
 				1A47F05D1622DB0B00E77332 /* patternBg.png in Resources */,
 				1A47F05E1622DB0B00E77332 /* patternBg@2x.png in Resources */,
+				1A4588AF162CEDDA009C2866 /* AboutViewController.xib in Resources */,
+				1A4588B1162CF2E8009C2866 /* profile.jpg in Resources */,
+				1A4588B8162CF67B009C2866 /* facebook.png in Resources */,
+				1A4588B9162CF67B009C2866 /* facebook@2x.png in Resources */,
+				1A4588BA162CF67B009C2866 /* github.png in Resources */,
+				1A4588BB162CF67B009C2866 /* github@2x.png in Resources */,
+				1A4588BC162CF67B009C2866 /* twitter.png in Resources */,
+				1A4588BD162CF67B009C2866 /* twitter@2x.png in Resources */,
+				1A4588C0162CF7E8009C2866 /* email.png in Resources */,
+				1A4588C1162CF7E8009C2866 /* email@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +738,7 @@
 				1A9F9C75161E9CB200CC7377 /* FMResultSet.m in Sources */,
 				1AD049CE161F1AFE006FDD7D /* SVProgressHUD.m in Sources */,
 				1AD049EB161F1D87006FDD7D /* SVPullToRefresh.m in Sources */,
+				1A4588AE162CEDDA009C2866 /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

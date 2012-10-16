@@ -19,5 +19,6 @@
 - (void)updateLastLog;
 
 - (IBAction)settingButtonPressed;
+- (IBAction)aboutButtonPressed;
 
 @end
